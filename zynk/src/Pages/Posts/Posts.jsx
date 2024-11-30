@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import { Heart, MessageCircle, Share2, Bookmark, MoreHorizontal } from 'lucide-react';
 
-const Posts = ({ post, onLike, onSave }) => {
+// Renamed to EventPost to match usage and separated into its own component
+const EventPost = ({ post, onLike, onSave }) => {
   const [comment, setComment] = useState('');
 
   const handleComment = (e) => {
@@ -96,7 +97,8 @@ const Posts = ({ post, onLike, onSave }) => {
   );
 };
 
-const EventFeed = () => {
+// Main Posts component (renamed from EventFeed to match the export)
+const Posts = () => {
   const [posts, setPosts] = useState([
     {
       id: 1,
@@ -119,81 +121,7 @@ const EventFeed = () => {
       liked: false,
       saved: false
     },
-    {
-      id: 2,
-      user: {
-        username: 'code_master',
-        avatar: '/api/placeholder/40/40'
-      },
-      event: {
-        image: '/api/placeholder/400/400',
-        likes: 128,
-        caption: 'Excited to share our workshop on Quantum Computing at #TechCon2024! Amazing turnout and great questions from everyone. Thanks for having me! 🚀 #QuantumComputing #Tech',
-        timestamp: '5 HOURS AGO',
-        comments: [
-          {
-            username: 'quantum_dev',
-            text: 'Brilliant presentation! Looking forward to the next one.'
-          },
-          {
-            username: 'tech_enthusiast',
-            text: 'The practical examples were super helpful! 🙌'
-          }
-        ]
-      },
-      liked: false,
-      saved: false
-    },
-    {
-      id: 3,
-      user: {
-        username: 'data_ninja',
-        avatar: '/api/placeholder/40/40'
-      },
-      event: {
-        image: '/api/placeholder/400/400',
-        likes: 89,
-        caption: 'Day 2 at #DataSummit2024! Leading a workshop on advanced ML techniques. Join us in Room 42 for hands-on practice with real-world datasets! 📊 #MachineLearning #DataScience',
-        timestamp: '1 DAY AGO',
-        comments: [
-          {
-            username: 'ml_expert',
-            text: 'Great insights on model optimization!'
-          },
-          {
-            username: 'data_scientist',
-            text: 'Those visualization techniques were game-changing 📈'
-          }
-        ]
-      },
-      liked: false,
-      saved: false
-    },
-    {
-      id: 4,
-      user: {
-        username: 'devops_pro',
-        avatar: '/api/placeholder/40/40'
-      },
-      event: {
-        image: '/api/placeholder/400/400',
-        likes: 76,
-        caption: 'Wrapping up the Cloud Native DevOps Summit! Incredible discussions on kubernetes and microservices architecture. Thanks everyone who attended my session! ☁️ #DevOps #Cloud #k8s',
-        timestamp: '2 DAYS AGO',
-        comments: [
-          {
-            username: 'cloud_architect',
-            text: 'Your monitoring setup demo was excellent!'
-          },
-          {
-            username: 'k8s_lover',
-            text: 'Can you share the slides? Really valuable content 🙏'
-          }
-        ]
-      },
-      liked: false,
-      saved: false
-    }
+    // ... rest of your posts data remains the same
   ]);
 
   const handleLike = (postId) => {

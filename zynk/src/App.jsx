@@ -14,6 +14,7 @@ import Profile from "./Pages/Profile/Profile.jsx";
 import Conference from "./Pages/Events/Conference.jsx";
 import Posts from "./Pages/Posts/Posts.jsx"; 
 import Settings from "./Pages/Profile/Settings.jsx";
+import Hero from './Pages/Home/Hero.jsx';
 function App() {
   return (
     <Router>
@@ -23,14 +24,17 @@ function App() {
           <Route path="/about" element={<About />} />
           <Route path="/events/featured" element={<FeaturedEvents />} />
           <Route path="/events" element={<TechEventCategories />} />
-          <Route path="/events/:category" element={<TechEventCategories />} />
+          {/* <Route path="/events/:category" element={<TechEventCategories />} /> */}
           <Route path="/contact" element={<ContactPage />} />
           <Route path="/login" element={<Login />} />
           <Route path="/signup" element={<SignupPage />} />
-          <Route path="/organize-event" element={<OrganizeEvent />} />
-          <Route path="/hackathons" element={<Hackathon />} />
+          <Route path="/events/organize-events" element={<OrganizeEvent />} />
+          <Route path="/events/conferences" element={<Conference />} />
+          <Route path="/events/hackathons" element={<Hackathon />} />
+          {/* <Route path="/events/all" element={<Hero/>} /> */}
+          {/* <Route path="/hackathons" element={<Hackathon />} /> */}
           <Route path="/profile" element={<Profile />} />
-          <Route path="/conference" element={<Conference />} />
+          {/* <Route path="/conference" element={<Conference />} /> */}
           <Route path="/posts" element={<Posts />} />
           <Route path="/settings" element={<Settings />} />
         </Routes>

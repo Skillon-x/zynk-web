@@ -12,7 +12,6 @@ const Navbar = () => {
     avatar: "/api/placeholder/32/32"
   };
 
-  // Updated menuItems array with console log to verify it's being used
   const menuItems = [
     { title: 'Home', path: '/' },
     {
@@ -32,9 +31,6 @@ const Navbar = () => {
   ];
 
   useEffect(() => {
-    // Add console log to verify menuItems
-    console.log('Menu Items:', menuItems);
-    
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 20);
     };
@@ -47,9 +43,7 @@ const Navbar = () => {
     window.location.href = '/login';
   };
 
-  // Updated NavLink component with console log
   const NavLink = ({ item }) => {
-    console.log('Rendering NavLink for:', item.title);
     const hasDropdown = item.dropdownItems?.length > 0;
 
     return (
@@ -87,9 +81,6 @@ const Navbar = () => {
     );
   };
 
-  // Rest of your code remains the same...
-  // [Previous ProfileButton and other code remains unchanged]
-
   return (
     <nav className={`fixed w-full z-50 transition-all duration-300 ${
       isScrolled ? 'bg-primary-800 shadow-lg' : 'bg-primary-800'
@@ -104,16 +95,42 @@ const Navbar = () => {
             </a>
           </div>
 
-          {/* Desktop Navigation with console log */}
+          {/* Desktop Navigation */}
           <div className="hidden md:flex flex-1 items-center justify-center space-x-1">
-            {menuItems.map((item, index) => {
-              console.log('Rendering menu item:', item.title);
-              return <NavLink key={index} item={item} />;
-            })}
+            {menuItems.map((item, index) => (
+              <NavLink key={index} item={item} />
+            ))}
           </div>
 
-          {/* Rest of your code remains the same... */}
-          {/* [Previous Auth Section, Mobile Menu Button, and Mobile Menu remain unchanged] */}
+          {/* Desktop Auth Section - Added this section */}
+          <div className="hidden md:flex items-center space-x-4">
+            <a href="/profile" className="text-secondary-50 hover:text-secondary-200 transition-colors">
+              <User className="w-5 h-5" />
+            </a>
+            <a href="/settings" className="text-secondary-50 hover:text-secondary-200 transition-colors">
+              <Settings className="w-5 h-5" />
+            </a>
+            <a href="/login" className="text-secondary-50 hover:text-secondary-200 transition-colors font-medium">
+              Login
+            </a>
+            <a href="/signup" className="px-4 py-2 bg-tertiary-600 hover:bg-tertiary-500 text-secondary-50 rounded-lg transition-colors font-medium">
+              Sign Up
+            </a>
+          </div>
+
+          {/* Mobile menu button */}
+          <div className="md:hidden">
+            <button
+              onClick={() => setIsMenuOpen(!isMenuOpen)}
+              className="inline-flex items-center justify-center p-2 rounded-md text-secondary-50 hover:text-secondary-200 focus:outline-none"
+            >
+              {isMenuOpen ? (
+                <X className="block h-6 w-6" />
+              ) : (
+                <Menu className="block h-6 w-6" />
+              )}
+            </button>
+          </div>
         </div>
       </div>
 
